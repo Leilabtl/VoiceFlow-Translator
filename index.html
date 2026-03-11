@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceFlow - Premium Voice Translator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header>
+            <h1>VoiceFlow</h1>
+            <p>Real-time Speech Translation</p>
+        </header>
+
+        <main>
+            <div class="toggle-section">
+                <span id="lang-src">English</span>
+                <label class="switch">
+                    <input type="checkbox" id="lang-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span id="lang-target">Finnish</span>
+            </div>
+
+            <div class="translation-grid">
+                <div class="card input-card">
+                    <div class="card-header">
+                        <span class="status-dot" id="input-status"></span>
+                        <h2>Voice Input</h2>
+                    </div>
+                    <div class="text-area-glow">
+                        <div id="input-text" class="text-display" placeholder="Speak now...">...</div>
+                    </div>
+                </div>
+
+                <div class="card output-card">
+                    <div class="card-header">
+                        <h2>Translation</h2>
+                    </div>
+                    <div class="text-area-glow">
+                        <div id="output-text" class="text-display" placeholder="Translation appears here...">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="mic-btn" class="mic-button">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mic-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                </button>
+                <p id="action-hint">Click to start listening</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
