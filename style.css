@@ -96,6 +96,57 @@ header p {
     margin-top: 0.5rem;
 }
 
+/* Video and Subtitles */
+.video-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid var(--glass-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+#video-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* Mirror effect */
+}
+
+.subtitle-box {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    animation: slideUp 0.3s ease-out;
+    z-index: 10;
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 20px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
 /* Toggle Switch */
 .toggle-section {
     display: flex;

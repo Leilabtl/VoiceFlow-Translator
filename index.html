@@ -32,7 +32,14 @@
                 <span id="lang-target">Finnish</span>
             </div>
 
-            <div class="translation-grid">
+            <div class="video-section">
+                <div class="video-container">
+                    <video id="video-feed" autoplay playsinline muted></video>
+                    <div id="subtitle-overlay" class="subtitle-box">...</div>
+                </div>
+            </div>
+
+            <div class="translation-grid" style="display: none;"> <!-- Hidden for cleaner video focus, but logic remains -->
                 <div class="card input-card">
                     <div class="card-header">
                         <span class="status-dot" id="input-status"></span>

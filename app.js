@@ -10,6 +10,25 @@ const langTargetLabel = document.getElementById('lang-target');
 let isListening = false;
 let recognition = null;
 
+const subtitleOverlay = document.getElementById('subtitle-overlay');
+const videoFeed = document.getElementById('video-feed');
+
+let stream = null;
+
+// Initialize Webcam
+async function initWebcam() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        videoFeed.srcObject = stream;
+    } catch (err) {
+        console.error("Error accessing webcam:", err);
+        actionHint.innerText = "Camera access denied. Showing text only.";
+    }
+}
+
+// Start webcam on load
+initWebcam();
+
 // Initialize Speech Recognition
 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -41,6 +60,8 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
                 translateText(finalTranscript);
             } else {
                 interimTranscript += event.results[i][0].transcript;
+                // Real-time interim feedback on subtitle
+                subtitleOverlay.innerText = interimTranscript;
             }
         }
 
@@ -88,6 +109,7 @@ micBtn.addEventListener('click', () => {
 function resetTexts() {
     inputText.innerText = '...';
     outputText.innerText = '...';
+    subtitleOverlay.innerText = '...';
 }
 
 // Translation using MyMemory API (Free, Anonymous usage)
@@ -97,17 +119,14 @@ async function translateText(text) {
     const from = langToggle.checked ? 'fi' : 'en';
     const to = langToggle.checked ? 'en' : 'fi';
     
-    // Smooth loading state for translation
-    if (outputText.innerText === '...') {
-        outputText.innerText = 'Translating...';
-    }
-
     try {
         const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${from}|${to}`);
         const data = await response.json();
 
         if (data.responseData) {
-            outputText.innerText = data.responseData.translatedText;
+            const translated = data.responseData.translatedText;
+            outputText.innerText = translated;
+            subtitleOverlay.innerText = translated;
         } else {
             outputText.innerText = 'Error in translation.';
         }
@@ -116,3 +135,4 @@ async function translateText(text) {
         outputText.innerText = 'Could not reach translation service.';
     }
 }
+
