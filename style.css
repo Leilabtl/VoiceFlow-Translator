@@ -48,7 +48,7 @@ body {
     animation: move 20s infinite alternate;
 }
 
-..blob-1 { background: var(--primary); top: -10%; left: -10%; }
+.blob-1 { background: var(--primary); top: -10%; left: -10%; }
 .blob-2 { background: var(--secondary); bottom: -10%; right: -10%; animation-delay: -5s; }
 .blob-3 { background: #34d399; top: 40%; left: 30%; animation-duration: 25s; }
 
@@ -85,6 +85,7 @@ header h1 {
     font-size: 3rem;
     font-weight: 600;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -1px;
