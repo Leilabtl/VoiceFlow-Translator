@@ -1,6 +1,6 @@
-# VoiceFlow - Premium Real-time Voice Translator
+# Leila App - Premium Real-time Voice Translator
 
-VoiceFlow is a modern, high-performance web application designed for seamless real-time speech translation between English and Finnish. Featuring a premium glassmorphism UI, it provides an intuitive and responsive experience for users to translate live speech instantly.
+Leila App is a modern, high-performance web application designed for seamless real-time speech translation between English and Finnish. Featuring a premium glassmorphism UI, it provides an intuitive and responsive experience for users to translate live speech instantly.
 
 ## 🚀 Features
 
