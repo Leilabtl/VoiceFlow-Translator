@@ -1,25 +1,26 @@
-# Leila App - Premium Real-time Voice Translator
+# Leila TRN - Premium Multi-Modal Translator
 
-Leila App is a modern, high-performance web application designed for seamless real-time speech translation between English and Finnish. Featuring a premium glassmorphism UI, it provides an intuitive and responsive experience for users to translate live speech instantly.
+Leila TRN is a modern, high-performance web application designed for seamless real-time speech and document translation. Featuring a premium dark blue and red glassmorphism UI, it provides an intuitive and responsive experience for users to translate live speech, images, and documents instantly.
 
 ## 🚀 Features
 
+- **Multi-Language Support**: Instantly translate between English, Finnish, French, and Farsi.
 - **Real-time Speech Recognition**: Captures and transcribes live voice input using the native Web Speech API.
-- **Bi-directional Translation**: Easily toggle between translating from English to Finnish and Finnish to English.
-- **Low-Latency Performance**: Optimized for speed, providing near-instant translation results.
+- **Document & Image Translation (OCR)**: Upload `.txt` files or images. The app uses Tesseract.js to extract text from images and translates it automatically.
+- **Interactive Translation Chat**: A built-in chat interface that logs your spoken and uploaded translations, allowing you to also type directly for quick text translation.
+- **Download Translations**: Export your entire translation session into a clean `translations.txt` file with a single click.
 - **Premium UI/UX**: 
     - **Glassmorphism Design**: Sleek, modern aesthetic with frosted glass effects.
-    - **Dark Mode**: Eye-friendly interface with deep blue and purple accents.
-    - **Dynamic Animations**: Micro-animations for microphone activity and state changes.
+    - **Dynamic Theme**: Stunning dark blue and red animated gradient background.
     - **Responsive Layout**: Works beautifully across various screen sizes.
 
 ## 🛠️ Technology Stack
 
-- **HTML5**: For semantic structure.
-- **CSS3 (Vanilla)**: For premium styling, animations, and glassmorphism.
+- **HTML5 & CSS3**: For semantic structure, premium styling, animations, and glassmorphism.
 - **JavaScript (ES6+)**: For application logic and API integration.
 - **Web Speech API**: For browser-native speech-to-text recognition.
 - **MyMemory Translation API**: For fast, reliable translation services.
+- **Tesseract.js**: For optical character recognition (OCR) on uploaded images.
 - **Google Fonts**: Utilizing the 'Outfit' typeface for modern typography.
 
 ## 📦 Setup & Usage
@@ -31,12 +32,16 @@ To run this project locally:
    git clone https://github.com/Leila.../VoiceFlow-Translator.git
    ```
 2. **Open the Application**:
-   Simply open `index.html` in a modern, supported browser (Google Chrome or Microsoft Edge are recommended for the best Web Speech API support).
+   It is recommended to run the app on a local server to ensure microphone and file access works perfectly. Note: Google Chrome or Microsoft Edge are recommended for Web Speech API support.
+   ```bash
+   python -m http.server 8000
+   ```
+   Then navigate to `http://localhost:8000/index.html`.
 3. **Use the Translator**:
-   - Grant microphone permissions when prompted.
-   - Use the toggle switch to select your language pair (EN-FI or FI-EN).
-   - Click the microphone button to start listening.
-   - Speak, and see your translation appear instantly!
+   - Select your Source and Target languages from the dropdowns.
+   - Click the microphone button to start translating your voice.
+   - Click "Upload Document" to translate an image or text file.
+   - View your full history in the Translation Chat and click "Download Translations" to save it!
 
 ## 📄 License
 

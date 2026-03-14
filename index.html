@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leila App - Premium Voice Translator</title>
+    <title>Leila TRN - Premium Voice Translator</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 </head>
 <body>
     <div class="background-blobs">
@@ -18,18 +19,32 @@
 
     <div class="glass-container">
         <header>
-            <h1>Leila App</h1>
+            <img src="logo.png" alt="Leila TRN Logo" class="app-logo">
+            <h1>Leila TRN</h1>
             <p>Real-time Speech Translation</p>
         </header>
 
         <main>
-            <div class="toggle-section">
-                <span id="lang-src">English</span>
-                <label class="switch">
-                    <input type="checkbox" id="lang-toggle">
-                    <span class="slider round"></span>
-                </label>
-                <span id="lang-target">Finnish</span>
+            <div class="language-dropdown-section">
+                <div class="lang-group">
+                    <label for="lang-src">Source</label>
+                    <select id="lang-src" class="lang-select">
+                        <option value="en">English</option>
+                        <option value="fi">Finnish</option>
+                        <option value="fr">French</option>
+                        <option value="fa">Farsi</option>
+                    </select>
+                </div>
+                <button id="swap-lang-btn" class="icon-btn">⇄</button>
+                <div class="lang-group">
+                    <label for="lang-target">Target</label>
+                    <select id="lang-target" class="lang-select">
+                        <option value="fi">Finnish</option>
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <option value="fa">Farsi</option>
+                    </select>
+                </div>
             </div>
 
             <div class="video-section">
@@ -65,6 +80,30 @@
                     <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mic-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
                 </button>
                 <p id="action-hint">Click to start listening</p>
+                
+                <div class="doc-controls">
+                    <input type="file" id="upload-doc" accept="image/*,.txt" style="display:none;">
+                    <button id="upload-btn" class="secondary-btn" onclick="document.getElementById('upload-doc').click()">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Upload Document
+                    </button>
+                    <button id="download-btn" class="secondary-btn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Translations
+                    </button>
+                </div>
+                <div id="vision-status" class="vision-status"></div>
+            </div>
+
+            <div class="chat-section">
+                <h3>Translation Chat</h3>
+                <div id="chat-messages" class="chat-messages">
+                    <div class="chat-message bot">Welcome! You can speak, upload a text/image document, or type here to translate.</div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type a message to translate...">
+                    <button id="chat-send-btn" class="secondary-btn">Send</button>
+                </div>
             </div>
         </main>
     </div>
